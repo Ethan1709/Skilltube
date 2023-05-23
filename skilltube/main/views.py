@@ -4,7 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(response):
-    return HttpResponse("<h1>Homepage skilltube view</h1>")
+    return HttpResponse('<h1>Homepage skilltube view</h1>')
 
 def video(response):
-    return  HttpResponse("<h1>video playing page<h1>")
+    return  HttpResponse('<h1>Video playing page<h1>')
