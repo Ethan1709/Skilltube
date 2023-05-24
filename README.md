@@ -17,9 +17,9 @@ This project is interpreted/tested on Ubuntu 22.04 using python3 (version 3.10.6
 ### Environment installation
 * Use this command to install your virtual working environment : `python3 -m venv <env>`
 
-### Environment activation & desactivation
+### Environment activation & deactivation
 * Use this command to activate your virtual working environment : `. <env>/bin/activate`
-* Use this command to desactivate your virtual working environment :  `deactivate`
+* Use this command to deactivate your virtual working environment :  `deactivate`
 
 ### Installation of all dependencies
 * Install the necessary depedencies for the project : `pip install -r requirements.txt`
