@@ -9,7 +9,13 @@ class Video(models.Model):
     video_path = models.CharField(max_length=255)
     thumbnail = models.ForeignKey('Thumbnail', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.video_title
+
 
 class Thumbnail(models.Model):
     thumbnail_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     thumbnail_path = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.thumbnail_path
