@@ -26,3 +26,5 @@ This project is interpreted/tested on Ubuntu 22.04 using python3 (version 3.10.6
 
 ## Local Server
 * To run the server, you have to use this command : `~/Skilltube/skilltube$ python3 manage.py runserver`
+
+modifie ou créer des models : python3 manage.py makemigrations and python3 manage.py migrate (celle la a faire la premiere fois pour créer le directory migration)
