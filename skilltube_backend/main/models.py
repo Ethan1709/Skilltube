@@ -4,13 +4,13 @@ import uuid
 # Create your models here.
 
 class Video(models.Model):
-    video_title = models.CharField(max_length=255)
+    caption = models.CharField(max_length=255)
     video_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    video_path = models.CharField(max_length=255)
-    thumbnail = models.ForeignKey('Thumbnail', on_delete=models.CASCADE)
+    video = models.FileField(upload_to='main/%y')
+
 
     def __str__(self):
-        return self.video_title
+        return self.caption
 
 
 class Thumbnail(models.Model):

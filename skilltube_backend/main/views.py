@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from . models import Video
+from .models import Video
 from . serializers import VideoSerializer
 
 # Create your views here.
@@ -16,3 +15,7 @@ def video_list(request):
         videos = Video.objects.all()
         serializer = VideoSerializer(videos, many=True)
         return Response(serializer.data)
+    
+def index(request):
+    video = Video.objects.all()
+    return render(request, 'index.html',{'video':video})
