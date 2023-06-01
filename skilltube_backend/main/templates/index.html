@@ -16,7 +16,9 @@
   <div>
     {% for x in video %}
       <div class="image-container">
-        <img src="{{x.thumbnail.url}}">
+        <a href="{{x.video.url}}">
+          <img src="{{x.thumbnail.url}}">
+        </a>
         <h3 class="caption">{{x.caption}}</h3>
       </div>
   </div>
