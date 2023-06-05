@@ -12,11 +12,3 @@ class Video(models.Model):
 
     def __str__(self):
         return self.caption
-
-
-class Thumbnail(models.Model):
-    thumbnail_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    thumbnail_path = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.thumbnail_path
