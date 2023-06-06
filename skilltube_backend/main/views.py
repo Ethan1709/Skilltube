@@ -19,3 +19,10 @@ def video_list(request):
 def index(request):
     video = Video.objects.all()
     return render(request, 'index.html',{'video':video})
+
+
+def user_registration(request):
+    return render(request, 'registration.html')
+
+def user_login(request):
+    return render(request, 'login.html')

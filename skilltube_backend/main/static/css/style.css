@@ -26,3 +26,19 @@
   color: #fff;
   text-align: center;
 }
+
+.log-buttons {
+  display: flex;
+  float: right;
+  align-items: center;
+  margin: 10px;
+}
+
+.log-buttons .btn-secondary {
+  background-color: purple;
+}
+
+.log-buttons .btn-primary {
+  background-color: rgb(204, 50, 150);
+  margin-right: 10px;
+}
