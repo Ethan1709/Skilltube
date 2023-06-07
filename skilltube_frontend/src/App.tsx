@@ -1,10 +1,21 @@
 import './App.css';
+import { Home } from './screens/Home';
+import { About } from './components/About';
+import { Video } from './components/Video';
+
 
 function App() {
   return (
     <div>
-      <h1>Skilltube</h1>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/wJ7FLJcGNCs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      <Home/>
+      <About/>
+      <Video id="wJ7FLJcGNCs"/>
+      <Video id="LSXSDnjG6gs"/>
+      <Video id="0J2QdDbelmY"/>
+
+      
+
+      
     </div>
   );
 }
