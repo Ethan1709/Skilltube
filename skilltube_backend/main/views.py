@@ -26,3 +26,14 @@ def user_registration(request):
 
 def user_login(request):
     return render(request, 'login.html')
+
+def search(request):
+    query = request.GET.get('caption', '')
+    
+    search_results = Video.objects.filter(caption__icontains=query)
+    
+    context = {
+        'search_results': search_results
+    }
+    
+    return render(request, 'search_results.html', context)

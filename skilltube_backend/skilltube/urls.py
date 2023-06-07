@@ -24,6 +24,8 @@ urlpatterns = [
     path('', include('main.urls')),
     path('registration', include('main.urls')),
     path('login', include('main.urls')),
+    path('search', include('main.urls'))
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
