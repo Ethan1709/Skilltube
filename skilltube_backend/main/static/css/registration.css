@@ -10,12 +10,9 @@ h2{
   justify-content: center;
 }
 a{
-  color: #333;
+  color: pink;
 }
-a:hover{
-  color: #57da66;
-  text-decoration: none;
-}
+
 .card{
   border: 0.40rem solid #f8f9fa;
   top: 10%;
@@ -36,9 +33,9 @@ a:hover{
 
 }
 
-.btn{
+.btn-primary{
   padding: 0.6rem 1.2rem;
-  background: #57da6f;
+  background: #57da73;
   border: 2px solid #57da7e;
 }
 .btn-primary:hover {
@@ -52,4 +49,12 @@ a:hover{
 .card-body.py-md-4{
     display: flex;
     justify-content: center;
+}
+
+.home-btn .btn-third {
+  display: flex;
+  float: left;
+  color: #008f0a;
+  top: -50px;
+  margin: 10px;
 }
