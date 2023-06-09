@@ -48,7 +48,7 @@
 .home-btn .btn-third {
   display: flex;
   float: left;
-  color: #008F11;
+  color: #008f26;
   top: -50px;
   margin: 10px;
 }
@@ -57,9 +57,9 @@
 .search-section .input-group-mb-3 .form-Control {
   display: flex;
   position: relative;
-  top: 10px;
-  left: 350px;
   width: 35%;
+  left: 330px;
+  top: 10px;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
