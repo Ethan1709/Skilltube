@@ -1,21 +1,15 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Video
-from .models import Skilltube_user
-from django import forms
-from django.core.validators import MinLengthValidator
+from django.contrib.auth.forms import UserCreationForm
+from .forms import UserRegisterForm
+from django.contrib import messages
 from . serializers import VideoSerializer
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
-class SkilltubeUserForm(forms.ModelForm):
-    password = forms.CharField(max_length=50, widget=forms.PasswordInput(), validators=[MinLengthValidator(8)])
-
-    class Meta:
-        model = Skilltube_user
-        fields = ['username', 'password', 'email']
 
 @api_view(['GET'])
 def video_list(request):
@@ -46,14 +40,19 @@ def search(request):
     
     return render(request, 'search_results.html', context)
 
-
 def signup(request):
     if request.method == 'POST':
-        form = SkilltubeUserForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('/')
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Hi {username}, your account has been successfully created')
+            return redirect('home')
     else:
-        form = SkilltubeUserForm()
-    return render(request, 'registration.html', {'form': form})
+        form = UserRegisterForm()
+
+    return render(request, 'registration.html', {'form':form})
+
+@login_required()
+def profile(request):
+    return render(request, 'users/profile.html')
