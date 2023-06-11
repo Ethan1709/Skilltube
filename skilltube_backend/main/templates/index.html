@@ -19,6 +19,12 @@
     <a class="btn btn-third" href="/">Skilltube</a>
   </div>
 
+  {% if request.GET.success_message %}
+  <div class="alert alert-success">
+    {{ request.GET.success_message }}
+  </div>
+  {% endif %}
+
   <div class="search-section">
     <form action="/search" method="GET">
       <div class="input-group-mb-3">

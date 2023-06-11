@@ -82,3 +82,11 @@
   left: 1000px;
   top: -28px;
 }
+
+.alert-success {
+  background-color: transparent;
+  border-color: transparent;
+  display: flex;
+  justify-content: center;
+  color: darkgreen;
+}
