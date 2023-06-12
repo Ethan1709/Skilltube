@@ -82,3 +82,9 @@ def upload(request):
         form = VideoForm()
       
     return render(request, 'video_upload.html', {'form':form})
+
+
+def video_player(request, video_id):
+    video = Video.objects.get(video_id=video_id)
+
+    return render(request, 'video.html', {'video':video})

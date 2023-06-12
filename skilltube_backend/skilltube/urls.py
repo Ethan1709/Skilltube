@@ -25,7 +25,8 @@ urlpatterns = [
     path('registration/', include('main.urls')),
     path('login/', include('main.urls')),
     path('search/', include('main.urls')),
-    path('video_upload/', include('main.urls'))
+    path('video_upload/', include('main.urls')),
+    path('video/<str:video_id>', include('main.urls'))
 ]
 
 if settings.DEBUG:
