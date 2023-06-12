@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Video
 from django.contrib.auth.forms import UserCreationForm
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, VideoForm
 from django.contrib import messages
 from . serializers import VideoSerializer
 from django.contrib.auth.decorators import login_required
@@ -70,3 +70,15 @@ def login_view(request):
             return redirect(reverse('login') + f'?error_message={error_message}')
 
     return render(request, 'login.html')
+
+
+def upload(request):
+    if request.method == 'POST':
+        form = VideoForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('home'))
+    else:
+        form = VideoForm()
+      
+    return render(request, 'video_upload.html', {'form':form})

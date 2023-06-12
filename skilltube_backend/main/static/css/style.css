@@ -1,9 +1,10 @@
 .image-container {
   margin-right: 10px;
+  margin-left: 10px;
   position: relative;
   width: 320px;
+  margin-bottom: 30px;
   height: 180px;
-  margin: 10px;
   float: left;
 }
 
@@ -43,6 +44,13 @@
   display: flex;
   background-color: rgb(50, 53, 204);
   margin-right: 10px;
+}
+
+.log-buttons .btn-fourth {
+  display: flex;
+  background-color: #008f26;
+  margin-right: 30px;
+  color: white;
 }
 
 .home-btn .btn-third {
