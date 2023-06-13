@@ -37,12 +37,16 @@
   <h1>TOUT MARCHE JE SUIS MEGA BALEZE ET JE NE SUIS PLUS DANS MAGMA !!!</h1>
 
   <div class="video-container">
-    <video controls>
+    <div class="video-player">
+      <video controls>
         <source src="/media/{{ video.video }}" type="video/mp4">
         Your browser does not support the video tag.
-    </video>
-    <h3 class="caption">{{ video.caption }}</h3>
-    <h2 class="uploaded-date">{{ video.created_at }}</h2>
+      </video>
+    </div>
+    <div class="caption-date">
+      <h2 class="caption">{{ video.caption }}</h2>
+      <h3 class="uploaded-date">{{ video.created_at }}</h3>
+    </div>
   </div>
 
 
