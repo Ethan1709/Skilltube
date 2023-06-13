@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+  background-color: black;
+  color:#008f26;
+  font-family: 'Share Tech Mono', monospace;
+}
+
 .image-container {
   margin-right: 10px;
   margin-left: 10px;
@@ -35,6 +43,14 @@
   margin: 10px;
 }
 
+.btn-search {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  margin-left: 1110px;
+  top: -28px;
+}
+
 .log-buttons .btn-secondary {
   display: flex;
   background-color: rgba(255, 0, 0, 0.726);
@@ -64,13 +80,14 @@
 }
 
 .log-buttons .btn-fourth:hover {
-  background-color: #628f00;
+  background-color: #379c37;
 }
 
 .home-btn .btn-third {
   display: flex;
   float: left;
   color: #008f26;
+  border-color: #008f26;
   top: -50px;
   margin: 10px;
 }
@@ -95,14 +112,6 @@
   appearance: none;
   border-radius: var(--bs-border-radius);
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-[type=submit]:not(:disabled), button:not(:disabled) {
-  cursor: pointer;
-  display: flex;
-  position: relative;
-  left: 1000px;
-  top: -28px;
 }
 
 .alert-success {
