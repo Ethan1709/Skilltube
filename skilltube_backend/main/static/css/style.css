@@ -40,14 +40,13 @@ body {
   display: flex;
   float: right;
   align-items: center;
-  margin: 10px;
 }
 
 .btn-search {
   cursor: pointer;
   display: flex;
   position: relative;
-  margin-left: 1110px;
+  /*margin-left: 1110px;*/
   top: -28px;
 }
 
@@ -92,12 +91,15 @@ body {
   margin: 10px;
 }
 
+.search-section {
+  margin-top: 10px;
+}
 
 .search-section .input-group-mb-3 .form-Control {
+  
   display: flex;
   position: relative;
-  width: 35%;
-  left: 330px;
+  width: 100%;
   top: 10px;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
