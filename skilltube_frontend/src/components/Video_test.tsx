@@ -1,15 +1,11 @@
 
-type VideoProps = {
-    id: string
-}
 
-export const Video : React.FC<VideoProps> = ({id}) => {
+export const Video_test = () => {
     return (
             <iframe width="560" height="315"
-            src={"https://www.youtube.com/embed/" + id}
-            title="YouTube video player" 
+            src={"https://drive.google.com/file/d/11QfT4T4GLSifQ5jQkQM46pfT5BntjiVL/view?usp=drive_link"}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowFullScreen>
             </iframe>
     )
-}
+} 

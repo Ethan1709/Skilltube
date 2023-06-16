@@ -7,9 +7,9 @@ class Player extends Component {
         <div className='player-wrapper'>
           <ReactPlayer
             className='react-player fixed-bottom'
-            url= '../public/videos/demo.mp4'
-            width='60%'
-            height='60%'
+            url= 'https://drive.google.com/file/d/11nydq9bxPLZScX_WUlAQbkFVr5ypGbxQ/view?usp=sharing'
+            width='80%'
+            height='80%'
             controls = {true}
             image='../public/images/image1.JPG'
             loop = { true }
