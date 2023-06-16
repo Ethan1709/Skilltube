@@ -32,7 +32,7 @@
   <div>
     {% for x in search_results %}
       <div class="image-container">
-        <a href="{{x.video.url}}">
+        <a href="/video/{{ x.video_id }}">
           <img src="{{x.thumbnail.url}}">
         </a>
         <h3 class="caption">{{x.caption}}</h3>

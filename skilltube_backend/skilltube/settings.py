@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'skilltube_database',
-        'USER': 'ethan',
-        'PASSWORD': 'ethan',
+        'USER': 'simon',
+        'PASSWORD': 'PuHeSe96',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
