@@ -15,4 +15,4 @@ class UserRegisterForm(UserCreationForm):
 class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
-        fields = ['caption', 'video', 'thumbnail']
+        fields = ['caption', 'video', 'thumbnail', 'category']
