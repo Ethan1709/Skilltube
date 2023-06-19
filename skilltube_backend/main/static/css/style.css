@@ -14,10 +14,11 @@ footer {
   margin-right: 10px;
   margin-left: 10px;
   position: relative;
-  width: 320px;
+  width: 380px;
   margin-bottom: 30px;
-  height: 180px;
+  height: 200px;
   float: left;
+  margin-left: 33px;
 }
 
 .image-container a img {
