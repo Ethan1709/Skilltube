@@ -7,9 +7,13 @@ body {
 
 .footer {
   display: flex;
-  background-color: aqua;
   justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .image-container {
@@ -17,7 +21,7 @@ body {
   margin-left: 10px;
   position: relative;
   width: 380px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   height: 200px;
   float: left;
   margin-left: 33px;
