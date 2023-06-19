@@ -1,60 +1,54 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans');
-
-body{
-  background: white;
-  font-family: 'PT Sans', sans-serif;
-}
-h2{
-  padding-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-}
-a{
-  color: pink;
+/* CSS code for Registration Form page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
 }
 
-.card{
-  border: 0.40rem solid #f8f9fa;
-  top: 10%;
-}
-.form-control{
-  background-color: #ffffff;
-  padding: 25px 15px;
-  margin-bottom: 1.3rem;
+h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 50px;
 }
 
-.form-control:focus {
-
-    color: green;
-    background-color: #ffffff;
-    border: 3px solid #da5757;
-    outline: 0;
-    box-shadow: none;
-
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary{
-  padding: 0.6rem 1.2rem;
-  background: #57da73;
-  border: 2px solid #57da7e;
-}
-.btn-primary:hover {
-
-    
-    background-color: #8cdf90;
-    border-color: #8cdf8f;
-    transition: .3s;
-
-}
-.card-body.py-md-4{
-    display: flex;
-    justify-content: center;
+button[type="submit"] {
+  background-color:  rgb(50, 53, 204);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.home-btn .btn-third {
-  display: flex;
-  float: left;
-  color: #008f0a;
-  top: -50px;
-  margin: 10px;
+button[type="submit"]:hover {
+  background-color: #0069d9;
 }
+
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+

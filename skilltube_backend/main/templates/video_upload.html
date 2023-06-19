@@ -1,13 +1,15 @@
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Upload Videos</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload Videos</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/video_uploader.css">
+    </head>
 <body>
 
-<h1>Video Uploader</h1>
+<h1>Select a video to upload</h1>
 <form enctype="multipart/form-data" method="POST" action="">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Upload"/>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Upload"/>
 </form>
+</body>
