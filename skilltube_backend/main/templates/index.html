@@ -15,7 +15,7 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="home-btn col-4 ">
+        <div class="home-btn col-4 bg-danger">
           <a class="btn btn-third" href="/">Skilltube</a>
         </div>
         <div class="col-4 ">
@@ -23,51 +23,50 @@
           <div class="alert ">
             {{ request.GET.success_message }}
           </div>{% endif %}
-      
-          <div class="search-section">
-            <form action="/search" method="GET" class="d-flex" role="search" >
+
+          <div class="search-section bg-primary">
+            <form action="/search" method="GET" class="d-flex" role="search">
               <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="caption">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
         </div>
-        <div class="log-buttons col-4 ">
-          <!-- <button class="btn btn-primary" type="submit">Search</button> -->
+        <div class="log-buttons col-4 bg-info">
           <a class="btn btn-fourth" href="/video_upload">Upload</a>
-          <a class="btn btn-primary" href="/registration/">Cygne Up</a>
+          <a class="btn btn-primary" href="/registration/">Sign Up</a>
           <a class="btn btn-secondary" href="/login">Log In</a>
         </div>
       </div>
     </div>
-    
+
 
   </header>
 
-<main>
- <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1>Watch videos !!!</h1>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Watch videos !!!</h1>
+        </div>
+      </div>
+      <div class="row">
+
+        <div>
+          {% for x in video %}
+          <div class="image-container">
+            <a href="/video/{{ x.video_id }}">
+              <img src="{{x.thumbnail.url}}">
+            </a>
+            <h3 class="caption">{{x.caption}}</h3>
+            <p>{{ x.created_at }}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+
     </div>
-  </div>
-  <div class="row">
-
-  <div>
-    {% for x in video %}
-    <div class="image-container">
-      <a href="/video/{{ x.video_id }}">
-        <img src="{{x.thumbnail.url}}">
-      </a>
-      <h3 class="caption">{{x.caption}}</h3>
-      <p>{{ x.created_at }}</p>
-    </div>
-    {% endfor %}
-  </div>
-
-  </div>
-
- </div>
-</main>
+  </main>
 
 
 
