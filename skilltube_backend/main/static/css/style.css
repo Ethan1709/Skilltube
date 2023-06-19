@@ -9,7 +9,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -57,7 +56,6 @@ body {
   cursor: pointer;
   display: flex;
   position: relative;
-  /*margin-left: 1110px;*/
   top: -28px;
 }
 
