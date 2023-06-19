@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 body {
-  background-color: rgba(0, 0, 0, 0);
   color:#008f26;
   font-family: 'Share Tech Mono', monospace;
 }
-footer {
-  text-align: center;
-  bottom:0;
+
+.footer {
+  display: flex;
+  background-color: aqua;
+  justify-content: center;
+  bottom: 0;
 }
 
 .image-container {
