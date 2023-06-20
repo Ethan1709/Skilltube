@@ -9,6 +9,7 @@ from .forms import UserRegisterForm, VideoForm
 from django.contrib import messages
 from . serializers import VideoSerializer
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 
@@ -28,16 +29,13 @@ def index(request):
     return render(request, 'index.html',{'video':video})
 
 
-def search(request):
-    query = request.GET.get('caption', '')
-    
-    search_results = Video.objects.filter(caption__icontains=query)
-    
-    context = {
-        'search_results': search_results
-    }
-    
-    return render(request, 'search_results.html', context)
+
+def category_search(request):
+    query = request.GET.get('category', '')
+    search_query = request.GET.get('caption', '')
+
+    search_results = Video.objects.filter(Q(category__icontains=query) & Q(caption__icontains=search_query))
+    return render(request, 'search_results.html', {'search_results': search_results})
 
 
 def signup(request):

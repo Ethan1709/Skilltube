@@ -21,6 +21,7 @@
         <div class="search-section">
           <form action="/search" method="GET" class="d-flex" role="search">
             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="caption">
+            <input class="form-control me-2" type="text" placeholder="Search by level" aria-label="Search" name="category">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
@@ -37,30 +38,33 @@
     </div>
   </header>
 
-  
+
   <main>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h1>Watch videos !!!</h1>
-          {% if request.GET.success_message %}
-          <div class="alert ">
-            {{ request.GET.success_message }}
-          </div>
-          {% endif %}
-        </div>
+    <div class="row m-lg-4">
+      <div class="col-2">
       </div>
-      <div class="row">
-        <div>
-          {% for x in video %}
-          <div class="image-container">
-            <a href="/video/{{ x.video_id }}">
-              <img src="{{x.thumbnail.url}}">
-            </a>
-            <h3 class="caption">{{x.caption}}</h3>
-            <p>{{ x.created_at }} <br>Level: {{x.category}}</p>
+      <div class="col-9">
+        <div class="row">
+          <div class="col-9">
+            {% if request.GET.success_message %}
+            <div class="alert ">
+              {{ request.GET.success_message }}
+            </div>
+            {% endif %}
           </div>
-          {% endfor %}
+        </div>
+        <div class="row">
+          <div>
+            {% for x in video %}
+            <div class="image-container">
+              <a href="/video/{{ x.video_id }}">
+                <img src="{{x.thumbnail.url}}">
+              </a>
+              <h3 class="caption">{{x.caption}}</h3>
+              <p>{{ x.created_at }} <br>Level: {{x.category}}</p>
+            </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
