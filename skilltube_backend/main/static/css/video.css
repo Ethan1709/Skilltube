@@ -70,6 +70,7 @@ body {
 .log-buttons .btn-secondary {
   display: flex;
   background-color: rgba(255, 0, 0, 0.726);
+  margin-right: 10px;
 }
 
 .log-buttons .btn-secondary:hover {
