@@ -23,7 +23,7 @@ form {
 }
 
 button[type="submit"] {
-  background-color:  #008f26;
+  background-color:  #0d6efd;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -33,7 +33,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0069d9;
+  background-color: rgba(220, 9, 9, 0.726);
 }
 
 label {
