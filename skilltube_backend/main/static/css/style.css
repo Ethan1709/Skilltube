@@ -92,6 +92,7 @@ body {
 }
 
 .home-btn .btn-third {
+  margin-left: auto;
   display: flex;
   float: left;
   color: #008f26;
