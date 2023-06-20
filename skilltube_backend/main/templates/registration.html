@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Registration Form</title>
     <link rel="stylesheet" type="text/css" href="/static/css/registration.css">
 </head>
+
 <body>
+    <header>
+        <div class="row">
+            <div class="home-btn col-4">
+              <a class="btn btn-third" href="/">Skilltube</a>
+            </div>
+        </div>
+    </header>
     <h2>Registration Form</h2>
     <form method="post">
         {% csrf_token %}
@@ -12,4 +21,5 @@
         <button type="submit">Register</button>
     </form>
 </body>
+
 </html>

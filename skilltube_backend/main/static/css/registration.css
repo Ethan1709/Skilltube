@@ -1,12 +1,15 @@
 /* CSS code for Registration Form page */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  color:#008f26;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 h2 {
   text-align: center;
-  color: #333;
+  color: #008f26;
   margin-top: 50px;
 }
 
@@ -20,7 +23,7 @@ form {
 }
 
 button[type="submit"] {
-  background-color:  rgb(50, 53, 204);
+  background-color:  #008f26;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -52,3 +55,10 @@ input[type="email"] {
   margin-bottom: 10px;
 }
 
+.home-btn .btn-third {
+  display: flex;
+  color: #008f26;
+  border-color: #008f26;
+  top: -50px;
+  margin: 10px;
+}
