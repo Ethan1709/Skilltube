@@ -1,4 +1,4 @@
 env/
-skilltube_backend/media/main
+skilltube_backend/media/
 skilltube_backend/skilltube/settings.py
 skilltube_frontend/src/videos
