@@ -93,6 +93,17 @@ body {
   background-color: #379c37;
 }
 
+.btn-five {
+  display: flex;
+  color: green;
+  background-color: orange;
+  width: 104px;
+  height: 38px;
+}
+
+.btn-five:hover {
+  background-color: yellow;
+}
 .log-buttons .btn-danger {
   margin-right: 10px;
 }
