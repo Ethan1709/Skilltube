@@ -26,15 +26,30 @@
           </form>
         </div>
       </div>
+      {% if user.is_authenticated %}
+      <div class="log-buttons col-4 justify-content-end">
+        <div>
+          <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Log Out</button>
+          </form>
+        </div>
+      </div>
+      {% else %}
       <div class="log-buttons col-4 justify-content-between">
         <div>
-          <a class="btn btn-fourth" href="/video_upload">Upload</a>
+          {% if user.autehnticated %}
+            <a class="btn btn-fourth" href="/video_upload">Upload</a>
+          {% else %}
+            <a class="btn btn-fourth" href="/login">Upload</a>
+          {% endif %}
         </div>
         <div class="d-flex ml-auto">
           <a class="btn btn-primary" href="/registration/">Sign Up</a>
           <a class="btn btn-secondary" href="/login">Log In</a>
         </div>
       </div>
+      {% endif %}
     </div>
   </header>
 
@@ -60,8 +75,8 @@
               <a href="/video/{{ x.video_id }}">
                 <img src="{{x.thumbnail.url}}">
               </a>
-              <h3 class="caption">{{x.caption}}</h3>
-              <p>{{ x.created_at }} <br>Level: {{x.category}}</p>
+              <h3 class="caption">{{x.caption }}</h3>
+              <p>{{ x.created_at }} <br>Level: {{ x.category }} <br>Uploaded by: {{ x.user.username }}</p>
             </div>
             {% endfor %}
           </div>

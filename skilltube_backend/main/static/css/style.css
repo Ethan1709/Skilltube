@@ -92,6 +92,10 @@ body {
   background-color: #379c37;
 }
 
+.log-buttons .btn-danger {
+  margin-right: 10px;
+}
+
 .home-btn .btn-third {
   margin-left: auto;
   display: flex;

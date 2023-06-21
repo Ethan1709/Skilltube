@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Video
-from django.contrib.auth.forms import UserCreationForm
 from .forms import UserRegisterForm, VideoForm
-from django.contrib import messages
 from . serializers import VideoSerializer
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+
 
 # Create your views here.
 
@@ -38,18 +41,29 @@ def category_search(request):
     return render(request, 'search_results.html', {'search_results': search_results})
 
 
+
 def signup(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()  # Save the user instance
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            token = default_token_generator.make_token(user)
+            
+            # Store the token in the user model
+            user.token = token
+            user.save()
+            
             username = form.cleaned_data.get('username')
             success_message = f'Hi {username}, your account has been successfully created.'
-            return redirect(reverse('home') + '?success_message=' + success_message)
+
+            user = authenticate(request, username=user.username, password=form.cleaned_data['password1'])
+            login(request, user)
+            return redirect(reverse('home') + f'?success_message={success_message}&uid={uid}&token={token}')
     else:
         form = UserRegisterForm()
 
-    return render(request, 'registration.html', {'form':form})
+    return render(request, 'registration.html', {'form': form})
 
 
 def login_view(request):
@@ -69,17 +83,25 @@ def login_view(request):
 
     return render(request, 'login.html')
 
+def logout_view(request):
+    logout(request)
+    success_message = 'You have been successfully logged out.'
+    return redirect(reverse('home') + f'?success_message={success_message}')
 
+
+@login_required
 def upload(request):
     if request.method == 'POST':
         form = VideoForm(request.POST or None, request.FILES or None)
         if form.is_valid():
-            form.save()
+            video = form.save(commit=False)
+            video.user = request.user  # Assign the currently logged-in user to the video
+            video.save()
             return redirect(reverse('home'))
     else:
         form = VideoForm()
       
-    return render(request, 'video_upload.html', {'form':form})
+    return render(request, 'video_upload.html', {'form': form})
 
 
 def video_player(request, video_id):
