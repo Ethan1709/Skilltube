@@ -84,7 +84,6 @@ def login_view(request):
 
     return render(request, 'login.html')
 
-
 def logout_view(request):
     logout(request)
     success_message = 'You have been successfully logged out.'
@@ -99,18 +98,11 @@ def upload(request):
             video = form.save(commit=False)
             video.user = request.user  # Assign the currently logged-in user to the video
 
-            caption = form.cleaned_data['caption']
-            if len(caption) > 20:
-                error_message = 'Caption should be 20 characters or less.'
-                return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
-
             # Validate video file type
             video_file = form.cleaned_data['video']
             if not video_file.name.endswith(('.mp4', '.avi', '.mov')):
                 error_message = 'Invalid video file type. Please upload a valid video file (MP4, AVI, MOV).'
                 return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
-            
-
 
             # Validate thumbnail file type
             thumbnail = form.cleaned_data['thumbnail']
@@ -123,14 +115,14 @@ def upload(request):
     else:
         form = VideoForm()
 
-    return render(request, 'index.html', {'form': form})
-
+    return render(request, 'video_upload.html', {'form': form})
 
 def video_player(request, video_id):
     video = Video.objects.get(video_id=video_id)
+
     return render(request, 'video.html', {'video':video})
 
-@login_required
+
 def my_videos(request, username):
     user = request.user
     if username != user.username:
