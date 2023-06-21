@@ -86,6 +86,7 @@ body {
   display: flex;
   background-color: #008f26;
   color: white;
+  margin-right: 10px;
 }
 
 .log-buttons .btn-fourth:hover {

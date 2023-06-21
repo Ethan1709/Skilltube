@@ -28,6 +28,7 @@
       </div>
       {% if user.is_authenticated %}
       <div class="log-buttons col-4 justify-content-end">
+        <a class="btn btn-fourth" href="/video_upload">Upload</a>
         <div>
           <form action="{% url 'logout' %}" method="POST">
             {% csrf_token %}
