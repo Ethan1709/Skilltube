@@ -77,7 +77,7 @@
                 <img src="{{x.thumbnail.url}}">
               </a>
               <h3 class="caption">{{x.caption}}</h3>
-              <p>{{ x.created_at }} <br>Level: {{x.category}}</p>
+              <p>{{ x.created_at }} <br>Level: {{x.category}} <br>Uploaded by: {{ x.user.username }}</p>
             </div>
             {% empty %}
               <h3>No video found</h3>
