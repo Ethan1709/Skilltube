@@ -72,3 +72,15 @@ input[type="email"] {
   margin-top: 10px;
   margin-left: 2px;
 }
+
+.error_message {
+  text-align: center;
+}
+
+.click-here {
+  text-align: center;
+}
+
+.signup-link {
+  color: #008f26;
+}

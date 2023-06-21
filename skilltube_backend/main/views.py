@@ -33,14 +33,12 @@ def index(request):
     return render(request, 'index.html',{'video':video})
 
 
-
 def category_search(request):
     query = request.GET.get('category', '')
     search_query = request.GET.get('caption', '')
 
     search_results = Video.objects.filter(Q(category__icontains=query) & Q(caption__icontains=search_query))
     return render(request, 'search_results.html', {'search_results': search_results})
-
 
 
 def signup(request):
@@ -84,6 +82,7 @@ def login_view(request):
 
     return render(request, 'login.html')
 
+
 def logout_view(request):
     logout(request)
     success_message = 'You have been successfully logged out.'
@@ -98,9 +97,15 @@ def upload(request):
             video = form.save(commit=False)
             video.user = request.user  # Assign the currently logged-in user to the video
 
+            #Validate the caption length
+            caption = form.cleaned_data['caption']
+            if len(caption) > 20:
+                error_message = 'Caption must be 20 or less caracters'
+                return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
+
             # Validate video file type
             video_file = form.cleaned_data['video']
-            if not video_file.name.endswith(('.mp4', '.avi', '.mov')):
+            if not video_file or video_file.name.endswith(('.mp4', '.avi', '.mov')):
                 error_message = 'Invalid video file type. Please upload a valid video file (MP4, AVI, MOV).'
                 return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
 
@@ -117,6 +122,7 @@ def upload(request):
 
     return render(request, 'video_upload.html', {'form': form})
 
+
 def video_player(request, video_id):
     video = Video.objects.get(video_id=video_id)
 
@@ -127,6 +133,6 @@ def my_videos(request, username):
     user = request.user
     if username != user.username:
         # Handle the case where the logged-in user is different from the username in the URL
-        return HttpResponse("You are not authorized to view this page.")
+        return HttpResponse('You are not authorized to view this page. Get out of here.')
     my_videos = Video.objects.filter(user=user)
     return render(request, 'my_videos.html', {'my_videos': my_videos})

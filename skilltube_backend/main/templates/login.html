@@ -13,14 +13,13 @@
         </div>
     </header>
     <h2>Login Form</h2>
-
-
+    <div class="error_message">
     {% if request.GET.error_message %}
     <div class="alert alert-success">
       {{ request.GET.error_message }}
     </div>
     {% endif %}
-
+    </div>
     <form method="POST">
         {% csrf_token %}
         <div>
@@ -33,6 +32,7 @@
         </div>
         <button type="submit">Login</button>
     </form>
+    <p class="click-here">Don't have an account yet ? Click here to <a class="signup-link" href="/registration">sign up</a></p>
 </body>
 
 </html>
