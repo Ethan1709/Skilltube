@@ -92,17 +92,29 @@ def logout_view(request):
 @login_required
 def upload(request):
     if request.method == 'POST':
-        form = VideoForm(request.POST or None, request.FILES or None)
+        form = VideoForm(request.POST, request.FILES)
         if form.is_valid():
             video = form.save(commit=False)
             video.user = request.user  # Assign the currently logged-in user to the video
+
+            # Validate video file type
+            video_file = form.cleaned_data['video']
+            if not video_file.name.endswith(('.mp4', '.avi', '.mov')):
+                error_message = 'Invalid video file type. Please upload a valid video file (MP4, AVI, MOV).'
+                return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
+
+            # Validate thumbnail file type
+            thumbnail = form.cleaned_data['thumbnail']
+            if not thumbnail or not thumbnail.name.endswith(('.jpg', '.jpeg', '.png')):
+                error_message = 'Invalid thumbnail image file type. Please upload a valid image file (JPG, JPEG, PNG).'
+                return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
+
             video.save()
             return redirect(reverse('home'))
     else:
         form = VideoForm()
-      
-    return render(request, 'video_upload.html', {'form': form})
 
+    return render(request, 'video_upload.html', {'form': form})
 
 def video_player(request, video_id):
     video = Video.objects.get(video_id=video_id)
