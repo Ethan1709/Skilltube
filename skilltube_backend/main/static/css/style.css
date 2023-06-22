@@ -8,12 +8,13 @@ body {
 
 .footer {
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+  float: left;
+  margin-left: 10px;
 }
 
 .image-container {
@@ -96,15 +97,17 @@ body {
 
 .btn-five {
   display: flex;
-  color: green;
-  background-color: orange;
+  color: white;
+  background-color:  rgb(50, 53, 204);
   width: 104px;
   height: 38px;
 }
 
 .btn-five:hover {
   background-color: yellow;
+  color: black;
 }
+
 .log-buttons .btn-danger {
   margin-right: 10px;
 }

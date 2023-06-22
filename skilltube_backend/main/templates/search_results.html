@@ -65,11 +65,7 @@
       <div class="col-9">
         <div class="row">
           <div class="col-9">
-            {% if request.GET.success_message %}
-            <div class="alert ">
-              {{ request.GET.success_message }}
-            </div>
-            {% endif %}
+            <h2>Search results</h2>
           </div>
         </div>
         <div class="row">
@@ -80,7 +76,7 @@
                 <img src="{{x.thumbnail.url}}">
               </a>
               <h3 class="caption">{{x.caption}}</h3>
-              <p>{{ x.created_at }} <br>Level: {{x.category}} <br>Uploaded by: {{ x.user.username }}</p>
+              <p>{{ x.created_at }} <br>Level: {{ x.category }} <br>Uploaded by: <a class="user-videos-name" href="/uploader/{{ x.user.username }}">{{ x.user.username }}</a></p>
             </div>
             {% empty %}
               <h3>No video found</h3>
