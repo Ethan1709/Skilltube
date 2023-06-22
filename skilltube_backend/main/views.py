@@ -105,7 +105,7 @@ def upload(request):
 
             # Validate video file type
             video_file = form.cleaned_data['video']
-            if not video_file or video_file.name.endswith(('.mp4', '.avi', '.mov')):
+            if not video_file or not video_file.name.endswith(('.mp4', '.avi', '.mov')):
                 error_message = 'Invalid video file type. Please upload a valid video file (MP4, AVI, MOV).'
                 return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
 
