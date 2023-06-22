@@ -85,8 +85,8 @@ def upload(request):
 
             #Validate the caption length
             caption = form.cleaned_data['caption']
-            if len(caption) > 20:
-                error_message = 'Caption must be 20 or less caracters'
+            if len(caption) > 22:
+                error_message = 'Caption must be 22 or less caracters'
                 return render(request, 'video_upload.html', {'form': form, 'error_message': error_message})
 
             # Validate video file type
