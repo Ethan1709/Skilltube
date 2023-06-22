@@ -76,7 +76,7 @@
                 <img src="{{x.thumbnail.url}}">
               </a>
               <h3 class="caption">{{x.caption }}</h3>
-              <p>{{ x.created_at }} <br>Level: {{ x.category }} <br>Uploaded by: {{ x.user.username }}</p>
+              <p>{{ x.created_at }} <br>Level: {{ x.category }} <br>Uploaded by: <a href="/uploader/{{ x.user.username }}">{{ x.user.username }}</p>
             </div>
             {% endfor %}
           </div>

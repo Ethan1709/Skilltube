@@ -136,3 +136,8 @@ def my_videos(request, username):
         return HttpResponse('You are not authorized to view this page. Get out of here.')
     my_videos = Video.objects.filter(user=user)
     return render(request, 'my_videos.html', {'my_videos': my_videos})
+
+
+def user_videos(request, username):
+    video_user = Video.objects.filter(user__username=username)
+    return render(request, 'uploader.html', {'video_user':video_user})
