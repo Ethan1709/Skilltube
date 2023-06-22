@@ -2,11 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from .models import Video
 from .forms import UserRegisterForm, VideoForm
-from . serializers import VideoSerializer
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.tokens import default_token_generator
@@ -14,18 +11,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.http import HttpResponse
 
-
 # Create your views here.
-
-@api_view(['GET'])
-def video_list(request):
-    """
-    List all code snippets, or create a new snippet.
-    """
-    if request.method == 'GET':
-        videos = Video.objects.all()
-        serializer = VideoSerializer(videos, many=True)
-        return Response(serializer.data)
 
 
 def index(request):
@@ -140,4 +126,6 @@ def my_videos(request, username):
 
 def user_videos(request, username):
     video_user = Video.objects.filter(user__username=username)
-    return render(request, 'uploader.html', {'video_user':video_user})
+    if not username or not video_user:
+        return HttpResponse('User does not exist or videos not found')
+    return render(request, 'uploader.html', {'video_user':video_user, 'username':username})
