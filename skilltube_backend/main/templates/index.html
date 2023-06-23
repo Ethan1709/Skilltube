@@ -21,7 +21,14 @@
         <div class="search-section">
           <form action="/search" method="GET" class="d-flex" role="search">
             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="caption">
-            <input class="form-control me-2" type="text" placeholder="Search by level" aria-label="Search" name="category">
+            <select class="form-control me-2" type="text" placeholder="Search by level" aria-label="Search" name="category">
+              <option value="">All categories</option>
+              <option value="Noob">Noob</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Masterclass">Masterclass</option>
+            </select>
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>

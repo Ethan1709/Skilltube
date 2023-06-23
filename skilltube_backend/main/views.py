@@ -23,7 +23,7 @@ def category_search(request):
     query = request.GET.get('category', '')
     search_query = request.GET.get('caption', '')
 
-    search_results = Video.objects.filter(Q(category__icontains=query) & Q(caption__icontains=search_query) | Q(user__username__icontains=search_query))
+    search_results = Video.objects.filter(Q(category__icontains=query) & (Q(caption__icontains=search_query) | Q(user__username__icontains=search_query)))
     return render(request, 'search_results.html', {'search_results': search_results})
 
 
