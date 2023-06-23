@@ -127,5 +127,5 @@ def my_videos(request, username):
 def user_videos(request, username):
     video_user = Video.objects.filter(user__username=username)
     if not username or not video_user:
-        return HttpResponse('User does not exist or videos not found')
+        return HttpResponse('This user does not exist')
     return render(request, 'uploader.html', {'video_user':video_user, 'username':username})
