@@ -178,3 +178,8 @@ body {
 .user-videos-name:hover {
   color: darkgreen;
 }
+
+.no-video-uploaded {
+  text-align: center;
+  margin-right: 140px;
+}

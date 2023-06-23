@@ -65,11 +65,7 @@
       <div class="col-9">
         <div class="row">
           <div class="col-9">
-            {% if request.GET.success_message %}
-            <div class="alert ">
-              {{ request.GET.success_message }}
-            </div>
-            {% endif %}
+            <h2>My videos</h2>
           </div>
         </div>
         <div class="row">
@@ -82,6 +78,8 @@
               <h3 class="caption">{{x.caption }}</h3>
               <p>{{ x.created_at }} <br>Level: {{ x.category }} <br>Uploaded by: {{ x.user.username }}</p>
             </div>
+            {% empty %}
+              <h2 class="no-video-uploaded">You did not upload any video yet !</h2>
             {% endfor %}
           </div>
         </div>
