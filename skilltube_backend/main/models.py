@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from datetime import datetime
+from django.utils import timezone
 from django.contrib.auth.models import User 
 
 # Create your models here.
@@ -28,4 +29,13 @@ class Video(models.Model):
         if not self.category:
             self.category = 'Beginner'
         super().save(*args, **kwargs)
-    
+
+
+class Comment(models.Model):
+    video = models.ForeignKey(Video, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'Comment by {self.user.username} on {self.video.caption}'

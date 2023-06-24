@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
-from .models import Video
-from .forms import UserRegisterForm, VideoForm
+from .models import Video, Comment
+from .forms import UserRegisterForm, VideoForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.tokens import default_token_generator
@@ -111,8 +111,27 @@ def upload(request):
 
 def video_player(request, video_id):
     video = Video.objects.get(video_id=video_id)
+    comments = Comment.objects.filter(video=video)
 
-    return render(request, 'video.html', {'video':video})
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.video = video
+            comment.user = request.user
+            comment.save()
+            return redirect('video', video_id=video_id)
+    else:
+        form = CommentForm()
+
+    context = {
+        'video': video,
+        'comments': comments,
+        'form': form,
+    }
+
+    return render(request, 'video.html', context)
+
 
 
 def my_videos(request, username):

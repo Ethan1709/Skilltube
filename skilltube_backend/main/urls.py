@@ -10,5 +10,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('search', views.category_search, name='search'),
     path('video_upload', views.upload, name='upload'),
-    path('video/<str:video_id>', views.video_player, name='video')
+    path('video/<uuid:video_id>/', views.video_player, name='video')
 ]
