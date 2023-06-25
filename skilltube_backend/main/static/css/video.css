@@ -153,3 +153,26 @@ body {
 .comment-error-message {
   color: rgba(255, 0, 0, 0.726);
 }
+
+.like-button {
+  display: flex;
+  float: right;
+  margin-top: 10px;
+  margin-right: 390px;
+}
+
+.like-total {
+  display: flex;
+  margin-left: 10px;
+}
+
+.error-like {
+  color: red;
+  float: right;
+  margin-top: 50px;
+  margin-right: 50px;
+}
+
+.fa-heart {
+  color:  red;
+}

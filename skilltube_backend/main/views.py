@@ -2,14 +2,14 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
-from .models import Video, Comment
+from .models import Video, Comment, Like
 from .forms import UserRegisterForm, VideoForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404, JsonResponse, HttpResponseBadRequest
 
 # Create your views here.
 
@@ -109,9 +109,15 @@ def upload(request):
     return render(request, 'video_upload.html', {'form': form})
 
 
+
 def video_player(request, video_id):
-    video = Video.objects.get(video_id=video_id)
+    try:
+        video = Video.objects.get(video_id=video_id)
+    except Video.DoesNotExist:
+        raise Http404("Video does not exist")
+
     comments = Comment.objects.filter(video=video)
+    likes = Like.objects.filter(video=video)
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -121,18 +127,21 @@ def video_player(request, video_id):
                 comment.video = video
                 comment.user = request.user
                 comment.save()
-            
             else:
                 error_message = 'You need to login to add a comment'
                 return redirect(reverse('video', kwargs={'video_id': video_id}) + f'?error_message={error_message}')
-
     else:
         form = CommentForm()
+
+    like_count = likes.count()
+    user_liked = Like.objects.filter(video=video, user=request.user).exists() if request.user.is_authenticated else False
 
     context = {
         'video': video,
         'comments': comments,
         'form': form,
+        'like_count': like_count,
+        'user_liked': user_liked,
     }
 
     return render(request, 'video.html', context)
@@ -153,3 +162,49 @@ def user_videos(request, username):
     if not username or not video_user:
         return HttpResponse('This user does not exist')
     return render(request, 'uploader.html', {'video_user':video_user, 'username':username})
+
+
+def require_POST(view_func):
+    def wrapped_view(request, *args, **kwargs):
+        if request.method != 'POST':
+            return HttpResponseBadRequest('Only POST requests are allowed.')
+        return view_func(request, *args, **kwargs)
+    return wrapped_view
+
+
+from django.http import HttpResponseBadRequest
+
+@require_POST
+def add_like(request, video_id):
+    try:
+        # Check if the video ID is valid and exists in your Video model
+        video = Video.objects.get(video_id=video_id)
+    except Video.DoesNotExist:
+        return JsonResponse({'success': False, 'message': 'Invalid video ID'})
+
+    # Check if the user is authenticated
+    if not request.user.is_authenticated:
+        error_message_like = 'You need to login to like a video'
+        return redirect(reverse('video', kwargs={'video_id': video_id}) + f'?error_message_like={error_message_like}')
+
+    # Check if the user has already liked the video
+    user_liked = Like.objects.filter(video=video, user=request.user).exists()
+
+    if user_liked:
+        error_message_like = 'You already liked this video'
+        return redirect(reverse('video', kwargs={'video_id': video_id}) + f'?error_message_like={error_message_like}')
+
+    # Create a new Like object and save it
+    like = Like(video=video, user=request.user)
+    like.save()
+
+    # Calculate the updated like count
+    like_count = video.likes.count()
+
+    # Return a success response with the updated like count and user_liked status
+    success_message_like = 'Like added successfully'
+    return redirect(reverse('video', kwargs={'video_id': video_id}) + f'?success_message_like={success_message_like}&like_count={like_count}&user_liked={user_liked}')
+
+
+
+

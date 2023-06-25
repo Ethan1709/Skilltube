@@ -10,5 +10,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('search', views.category_search, name='search'),
     path('video_upload', views.upload, name='upload'),
-    path('video/<uuid:video_id>/', views.video_player, name='video')
+    path('video/<uuid:video_id>/', views.video_player, name='video'),
+    path('video/<uuid:video_id>/add_like/', views.add_like, name='add_like')
 ]
