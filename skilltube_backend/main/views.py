@@ -204,7 +204,3 @@ def add_like(request, video_id):
     # Return a success response with the updated like count and user_liked status
     success_message_like = 'Like added successfully'
     return redirect(reverse('video', kwargs={'video_id': video_id}) + f'?success_message_like={success_message_like}&like_count={like_count}&user_liked={user_liked}')
-
-
-
-
