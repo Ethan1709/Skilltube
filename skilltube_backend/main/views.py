@@ -123,7 +123,7 @@ def video_player(request, video_id):
                 comment.save()
             
             else:
-                error_message = 'You need to login to post a comment'
+                error_message = 'You need to login to add a comment'
                 return redirect(reverse('video', kwargs={'video_id': video_id}) + f'?error_message={error_message}')
 
     else:
