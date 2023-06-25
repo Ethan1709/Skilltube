@@ -116,11 +116,16 @@ def video_player(request, video_id):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.video = video
-            comment.user = request.user
-            comment.save()
-            return redirect('video', video_id=video_id)
+            if request.user.is_authenticated:
+                comment = form.save(commit=False)
+                comment.video = video
+                comment.user = request.user
+                comment.save()
+            
+            else:
+                error_message = 'You need to login to post a comment'
+                return redirect(reverse('video', kwargs={'video_id': video_id}) + f'?error_message={error_message}')
+
     else:
         form = CommentForm()
 

@@ -46,7 +46,7 @@
       {% else %}
       <div class="log-buttons col-4 justify-content-between">
         <div>
-          {% if user.autehnticated %}
+          {% if user.is_authenticated %}
             <a class="btn btn-fourth" href="/video_upload">Upload</a>
           {% else %}
             <a class="btn btn-fourth" href="/login">Upload</a>

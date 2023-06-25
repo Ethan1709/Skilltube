@@ -72,22 +72,29 @@
             </video>
           </div>
           <div class="caption-date">
-            <h2 class="caption">{{ video.caption }}</h2>
-            <h3 class="uploaded-date">{{ video.created_at }}</h3>
+            <h1 class="caption">{{ video.caption }}</h1>
+            <h4 class="uploaded-date">{{ video.created_at }}</h4>
             <h4 class="uploader">Uploaded by: {{ video.user.username }}</h4>
           </div>
         </div>
       </div>
       <h2>Comment section</h2>
+      <h3>{{ video.comments.count }} comment(s)</h3>
+      <br>
       {% for comment in comments %}
     <div class="comment">
-        <p>{{ comment.user.username }}</p>
-        <p>{{ comment.content }}</p>
-        <p>{{ comment.created_at }}</p>
+        <p class="comment-username">@{{ comment.user.username }}, {{ comment.created_at }}</p>
+        <p class="comment-content">{{ comment.content }}</p>
     </div>
       {% empty %}
     <p>No comments yet.</p>
       {% endfor %}
+
+    <div class="comment-error-message">
+      {% if request.GET.error_message %}
+        <p>{{ request.GET.error_message }}</p>
+      {% endif %}
+    </div>
 
       <form method="POST" action="{% url 'video' video_id=video.video_id %}">
         {% csrf_token %}

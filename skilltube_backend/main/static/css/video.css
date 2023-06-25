@@ -137,3 +137,19 @@ body {
   border-radius: var(--bs-border-radius);
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.comment {
+  margin-bottom: 45px;
+}
+
+.comment-username {
+  color: rgb(50, 53, 204);
+}
+
+.comment-content {
+  color: black;
+}
+
+.comment-error-message {
+  color: rgba(255, 0, 0, 0.726);
+}
