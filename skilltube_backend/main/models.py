@@ -2,7 +2,8 @@ from django.db import models
 import uuid
 from datetime import datetime
 from django.utils import timezone
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
+from django.db.models import Count
 
 # Create your models here.
 
@@ -39,3 +40,15 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.user.username} on {self.video.caption}'
+    
+
+class Like(models.Model):
+    video = models.ForeignKey(Video, on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('video', 'user')
+
+    @property
+    def like_count(self):
+        return self.video.likes.count()
