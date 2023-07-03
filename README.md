@@ -62,6 +62,5 @@ modify or create models : python3 manage.py makemigrations and python3 manage.py
  - Uploader filter - *Sort video by uploader*
 
 # Authors
-
-[Ethan Benyayer aka "Benya"](https://www.linkedin.com/in/ethan-benyayer-a70b0226b/) ([`Ethan Benyayer`](https://github.com/Ethan1709) on Github)
-[Simon Richard](https://www.linkedin.com/in/simonrichard-dev/) ([`Simon Richard`](https://github.com/simonrichard-dev) on Github)
+- [Ethan Benyayer aka "Benya"](https://www.linkedin.com/in/ethan-benyayer-a70b0226b/) ([`Ethan Benyayer`](https://github.com/Ethan1709) on Github)
+- [Simon Richard](https://www.linkedin.com/in/simonrichard-dev/) ([`Simon Richard`](https://github.com/simonrichard-dev) on Github)
